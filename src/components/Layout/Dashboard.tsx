@@ -7,6 +7,7 @@ import Header from "../Header";
 const Dashboard = () => {
   const codeBoxParent = React.useRef<HTMLDivElement>(null);
   const [isLeftSidebarOpen, setLeftSidebarOpen] = useState(true);
+  const [downloadFlag, setDownload] = useState(false);
   const [isRightSidebarOpen, setRightSidebarOpen] = useState(true);
 
   const toggleLeftSidebar = () => {
@@ -21,7 +22,7 @@ const Dashboard = () => {
     <div className="h-screen db p-5 flex flex-col gap-5">
       <div className="header content rounded-xl">
         <div className="w-full flex flex-row h-full">
-          <Header />
+          <Header setDownload={setDownload} />
         </div>
       </div>
       <div className="w-full view">
@@ -34,7 +35,11 @@ const Dashboard = () => {
             ref={codeBoxParent}
             className="content w-full rounded-xl flex lg:m-0 sm:m-auto lg:justify-center snap-y scroll-smooth overflow-auto py-20 md:w-10/12 px-20 lg:px-0"
           >
-            <CodeBox parent={codeBoxParent} />
+            <CodeBox
+              parent={codeBoxParent}
+              downloadFlag={downloadFlag}
+              setDownload={setDownload}
+            />
           </div>
 
           <div className="content hidden sidebar-right rounded-xl  md:w-3/12 md:block p-5 overflow-auto scroll-smooth scroll-custom">

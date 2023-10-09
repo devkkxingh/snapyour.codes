@@ -5,8 +5,9 @@ import "./Code.css";
 import { BiSolidXCircle } from "react-icons/bi";
 import CodeEditor from "./CodeEditor";
 import { useAppState } from "../../hooks/useAppState";
+import { connect } from "react-redux";
 
-const CodeBox: React.FC<any> = ({ parent }) => {
+const CodeBox: React.FC<any> = ({ parent, downloadFlag, setDownload }) => {
   const boxBg = useAppState("boxBackground");
   const padding = useAppState("padding");
   const opacity = useAppState("opacity");
@@ -88,6 +89,13 @@ const CodeBox: React.FC<any> = ({ parent }) => {
     }
   };
 
+  React.useEffect(() => {
+    if (downloadFlag) {
+      downloadAsPng();
+      setDownload(false);
+    }
+  }, [downloadFlag]);
+
   const setAutoWidth = () => {
     if (codeBoxRef.current) {
       const child = codeBoxRef.current.firstChild as HTMLElement;
@@ -124,9 +132,6 @@ const CodeBox: React.FC<any> = ({ parent }) => {
             <div className="z-20">
               <CodeEditor width={width} />
             </div>
-            {/* <div className="scale-display">{width}px</div> */}
-
-            <button onClick={downloadAsPng}></button>
           </div>
           {showStrip && (
             <div className="size-bar absolute flex w-full mt-4">
