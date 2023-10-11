@@ -1,1 +1,1 @@
-# snapyour.codes
+# www.snapyour.codes
