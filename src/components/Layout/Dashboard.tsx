@@ -3,6 +3,7 @@ import CodeBox from "../Code/CodeBox";
 import LeftSideBar from "../LeftSideBar/Index";
 import RightSideBar from "../RightSideBar/Index";
 import Header from "../Header";
+import Footer from "../Footer/Index";
 
 const Dashboard = () => {
   const codeBoxParent = React.useRef<HTMLDivElement>(null);
@@ -19,13 +20,13 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="h-screen db p-5 flex flex-col gap-5">
+    <div className="h-screen db p-5 flex flex-col md:gap-5 gap-2.5">
       <div className="header content rounded-xl">
         <div className="w-full flex flex-row h-full">
           <Header setDownload={setDownload} />
         </div>
       </div>
-      <div className="w-full view">
+      <div className="w-full view sm:mobile-view">
         <div className="dashboard-layout flex w-full gap-5 h-full">
           <div className="content hidden sidebar-left rounded-xl  md:w-3/12 md:block p-5 overflow-auto scroll-smooth scroll-custom ">
             <LeftSideBar />
@@ -47,9 +48,9 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      {/* <div className="footer content rounded-xl xs:block hidden">
-        <div></div>
-      </div> */}
+      <div className="footer content rounded-xl block md:hidden">
+        <Footer />
+      </div>
     </div>
   );
 };

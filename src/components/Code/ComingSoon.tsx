@@ -6,7 +6,7 @@ import * as comingSoonAnimation from "../../animations/coming-soon.json";
 const ComingSoon: React.FC = () => {
   return (
     <div
-      className="flex justify-center flex-col select-none rounded-md tabs tabs-boxed"
+      className="flex justify-center flex-col select-none rounded-md tabs tabs-boxed md:w-auto w-[200px] h-full"
       style={{
         padding: "20px",
       }}

@@ -224,7 +224,14 @@ quillbot-extension-highlights {
   height: calc(92vh - 8vh);
 }
 
-.header {
+@media only screen and (max-width: 900px) {
+  .view {
+    height: calc(92vh - 16vh) !important;
+  }
+}
+
+.header,
+.footer {
   height: calc(100vh - 92vh);
 }
 
