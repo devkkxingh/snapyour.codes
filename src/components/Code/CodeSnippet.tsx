@@ -61,7 +61,7 @@ const CodeSnippet: React.FC<CodeSnippet> = ({
     <div
       onClick={() => onThemeChange(value)}
       className={clsx(
-        "flex justify-center flex-col select-none rounded-md cursor-pointer",
+        "flex md:w-auto w-[200px] justify-center flex-col select-none rounded-md cursor-pointer",
         {
           "border-slate-100 border-2": selected,
         }

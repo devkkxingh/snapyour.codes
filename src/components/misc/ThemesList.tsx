@@ -15,8 +15,12 @@ import {
   changeBoxBackground,
   changeTheme,
 } from "../../store/reducers/settingReducer";
+import cn from "classnames";
 
-const ThemesList = () => {
+interface ThemeList {
+  direction: "row" | "col";
+}
+const ThemesList = ({ direction }: ThemeList) => {
   const dispatch = useDispatch();
   const customTheme = useAppState("theme");
   const [searchValue, setSearchValue] = useState("");
@@ -38,9 +42,14 @@ const ThemesList = () => {
       <div className="w-full  content !border-0">
         <CustomSearch onChange={(e) => setSearchValue(e)} />
       </div>
-      <div className="flex flex-col gap-8 w-full">
+      <div
+        className={cn("flex gap-8 w-full", {
+          "flex-col": direction === "col",
+          "flex-row overflow-auto": direction === "row",
+        })}
+      >
         {searcher.search(searchValue).map((customLayout: any, index: any) => (
-          <div className="grid grid-cols-1" key={index}>
+          <div className="w-full" key={index}>
             <CodeSnippet
               selected={customTheme.value === customLayout.value}
               bg={gradientColors[customLayout.key].color}
@@ -53,7 +62,7 @@ const ThemesList = () => {
           </div>
         ))}
         {(searchValue === "" || searcher.search(searchValue).length === 0) && (
-          <div className="grid grid-cols-1">
+          <div className="w-full">
             <ComingSoon />
           </div>
         )}

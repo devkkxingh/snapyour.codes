@@ -55,7 +55,7 @@ export const CustomTabs: FC<TabsProps> = ({
         })}
       >
         <Tab.Group>
-          <Tab.List className="tabs-boxed rounded-md flex w-full text-xs items-center text-gray-400 flex-col md:flex-row relative">
+          <Tab.List className="tabs-boxed rounded-md flex w-full text-xs items-center text-gray-400 flex-row relative">
             <span
               className="slider absolute h-6 transition-all duration-300"
               style={{
