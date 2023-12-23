@@ -1,6 +1,6 @@
 # SnapYour.Codes
 
-![SnapYour.Codes Logo](link/to/your/logo.png)
+![SnapYour.Codes Logo](https://github.com/devkkxingh/snapyour.codes/blob/main/src/components/UI/logo.png)
 
 SnapYour.Codes is a powerful and intuitive code snippet screenshot generator built on modern web technologies. Capture your code in style, customize the appearance, and generate stunning images effortlessly.
 
@@ -47,4 +47,3 @@ Contributions are welcome! To contribute to SnapYour.Codes, follow these steps:
 ## License
 
 This project is licensed under the [MIT License](https://github.com/devkkxingh/snapyour.codes/blob/main/LICENSE).
-

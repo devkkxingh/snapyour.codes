@@ -1,5 +1,5 @@
 import { FiDownload, FiImage, FiCode } from "react-icons/fi";
-import Logo from "../UI/Logo";
+import LogoSvg from "../UI/LogoSvg";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 
@@ -7,7 +7,7 @@ const Header = ({ setDownload }: any) => {
   return (
     <div className="flex w-full flex-row justify-between px-5 h-full items-center">
       <div className="logo text-white font-bold italic uppercase flex items-center">
-        <Logo />
+        <LogoSvg />
 
         <div className="relative grid select-none items-center whitespace-nowrap rounded-lg bg-black py-1.5 px-3 font-sans text-xs font-normal lowercase text-white">
           <span className="">{"<YourCodes/>"}</span>
