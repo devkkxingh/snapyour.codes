@@ -12,6 +12,7 @@ const CustomSearch = ({ onChange }: CustomSearch) => {
         type="text"
         onChange={(e) => onChange(e.target.value)}
         placeholder="Search theme.."
+        autoFocus={false}
         className="h-full bg-none outline-none text-white bg-transparent text-sm w-full"
       ></input>
     </div>

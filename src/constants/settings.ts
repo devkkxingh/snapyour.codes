@@ -20,7 +20,6 @@ import {
   XmlIcon,
 } from "../components/UI/FileIcons";
 import { MacOsFrame, WindowsFrame } from "../components/UI/Frame";
-import volcanoTheme from "../themes/volcano";
 import jetwave from "../themes/jetwave";
 import purple from "../themes/purple";
 import {
@@ -34,6 +33,7 @@ import {
   Ubuntu,
 } from "../components/UI/FontIcon";
 import light from "../themes/light";
+import { FaTwitter, FaLinkedinIn } from "react-icons/fa";
 
 //  label: string;
 export const PaddingTab = [
@@ -66,6 +66,11 @@ export const EditorStyle = [
 export const EditorHeader = [
   { value: "macos", label: MacOsFrame },
   { value: "windows", label: WindowsFrame },
+];
+
+export const ShareLogo = [
+  { value: "twitter", label: FaTwitter },
+  { value: "linkedin", label: FaLinkedinIn },
 ];
 
 export const EditorReflection = [

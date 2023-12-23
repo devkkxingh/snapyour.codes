@@ -68,18 +68,26 @@ const CodeBox: React.FC<any> = ({ parent, downloadFlag, setDownload }) => {
     requestAnimationFrame(checkResizing);
   };
 
-  const downloadAsPng = () => {
+  const downloadAsPng = (format: string) => {
     if (codeBoxRef.current) {
       setShowResize(false);
       const fullWidth = codeBoxRef.current.offsetWidth;
-
-      htmlToImage
-        .toPng(codeBoxRef.current, {
-          quality: 1,
-          width: fullWidth,
-        })
+      const imageObj =
+        format === "png"
+          ? htmlToImage.toPng(codeBoxRef.current, {
+              quality: 1,
+              width: fullWidth,
+            })
+          : htmlToImage.toSvg(codeBoxRef.current, {
+              quality: 1,
+              width: fullWidth,
+            });
+      imageObj
         .then(function (dataUrl) {
-          download(dataUrl, "codebox.png");
+          download(
+            dataUrl,
+            format === "png" ? "snapyourcodes.png" : "snapyourcodes.svg"
+          );
           setShowResize(true);
         })
         .catch(function (error) {
@@ -90,9 +98,9 @@ const CodeBox: React.FC<any> = ({ parent, downloadFlag, setDownload }) => {
   };
 
   React.useEffect(() => {
-    if (downloadFlag) {
-      downloadAsPng();
-      setDownload(false);
+    if (downloadFlag.enable) {
+      downloadAsPng(downloadFlag.format);
+      setDownload({ enable: false, format: "png" });
     }
   }, [downloadFlag]);
 
