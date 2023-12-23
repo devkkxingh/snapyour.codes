@@ -47,3 +47,4 @@ Contributions are welcome! To contribute to SnapYour.Codes, follow these steps:
 ## License
 
 This project is licensed under the [MIT License](https://github.com/devkkxingh/snapyour.codes/blob/main/LICENSE).
+
