@@ -4,13 +4,11 @@ import { Highlight, themes } from "prism-react-renderer";
 import "./Code.css";
 import { useAppState } from "../../hooks/useAppState";
 import clsx from "clsx";
-import { customThemeSet } from "../../constants/settings";
 import { MacOsFrame, WindowsFrame } from "../UI/Frame";
-import prettier from "prettier";
-import parserBabel from "prettier/parser-babel";
 import { changeCode } from "../../store/reducers/settingReducer";
 import { useDispatch } from "react-redux";
 import { useResizeDetector } from "react-resize-detector";
+import { FaTwitter, FaLinkedinIn } from "react-icons/fa";
 
 const CodeEditorComponent: React.FC<any> = ({ width }) => {
   const dispatch = useDispatch();
@@ -21,19 +19,18 @@ const CodeEditorComponent: React.FC<any> = ({ width }) => {
   const reflection = useAppState("reflection");
   const style = useAppState("style");
   const os = useAppState("os");
+  const name = useAppState("username");
+  const logo = useAppState("logo");
+  const watermark = useAppState("watermark");
   const language = useAppState("language");
   const lineNumber = useAppState("lineNumber");
   const code = useAppState("code");
   const [title, setTitle] = useState("Untitled - 1");
-  const [isDarkMode, setIsDarkMode] = useState(true);
   const lineNumbersRef = useRef<HTMLDivElement>(null);
   const resizeDiv = useRef<HTMLDivElement>(null);
 
-  const toggleMode = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
-  const setHeaderTitle = (text: string) => {
+  const setHeaderTitle = (e: any) => {
+    const text = e.target.value;
     if (text === "") setTitle("Untitled - 1");
     setTitle(text);
   };
@@ -115,29 +112,16 @@ const CodeEditorComponent: React.FC<any> = ({ width }) => {
           paddingLeft: lineNumber === "hide" ? "10px" : "0px",
           paddingRight: "10px",
         }}
-        textareaClassName={`h-full codeImage select-none ${
-          isDarkMode ? "dark-mode" : "light-mode"
-        }`}
+        textareaClassName={`h-full codeImage select-none`}
       />
     ),
-    [
-      code,
-      fontFamily,
-      fontWeight,
-      lineNumber,
-      isDarkMode,
-      dispatch,
-      highlight,
-      theme,
-    ]
+    [code, fontFamily, fontWeight, lineNumber, dispatch, highlight, theme]
   );
 
   return (
     <div
       onResize={() => setLineHeight()}
-      className={`h-full flex justify-center items-center opacity-100 relative ${
-        isDarkMode ? "dark-mode" : "light-mode"
-      }`}
+      className={`h-full flex justify-center items-center opacity-100 relative`}
     >
       <div className="code-window">
         {headerVisible === "show" && (
@@ -164,11 +148,10 @@ const CodeEditorComponent: React.FC<any> = ({ width }) => {
               <input
                 type="text"
                 value={title}
-                onFocus={(e) => e.target.value !== "" && setTitle("")}
-                onBlur={(e) =>
-                  e.target.value !== "" && setTitle("Untitled - 1")
-                }
-                onChange={(e) => setTitle(e.target.value)}
+                onBlur={(e) => {
+                  if (title === "") setTitle("Untitled - 1");
+                }}
+                onChange={setHeaderTitle}
                 className="outline-none text-center bg-transparent font-normal text-sm"
               />
             </div>
@@ -183,13 +166,12 @@ const CodeEditorComponent: React.FC<any> = ({ width }) => {
           </div>
         )}
         <div
-          className={clsx("code-container pt-1", {
+          className={clsx("code-container pt-1 pb-5 relative", {
             "rounded-t-[8px] pt-5": headerVisible === "hide",
+            "pb-12": watermark === "show",
           })}
           style={{
             background: style === "default" ? theme?.bg : theme?.mergeStyle,
-            // borderTopLeftRadius: headerVisible === "no" ? "8px" : "0px",
-            // borderTopRightRadius: headerVisible === "no" ? "8px" : "0px",
           }}
         >
           <div
@@ -205,6 +187,18 @@ const CodeEditorComponent: React.FC<any> = ({ width }) => {
             <>{getLineNumbers()}</>
           </div>
           <div ref={resizeDiv}>{codeEditor}</div>
+          {watermark === "show" && (
+            <div className="watermark absolute bottom-3 right-3 rounded-full bg-black p-2 px-6">
+              <div className="flex gap-2 items-center justify-between">
+                {logo === "twitter" ? (
+                  <FaTwitter className="text-white text-lg " />
+                ) : (
+                  <FaLinkedinIn className="text-white text-lg " />
+                )}
+                <div className="text-white">{name}</div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 

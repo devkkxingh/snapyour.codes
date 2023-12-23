@@ -21,7 +21,7 @@ const WindowFrame = () => {
       <div className="text-white text-left pb-5 font-semibold text-sm">
         Window
       </div>
-      <div className="flex flex-col gap-4 w-full">
+      <div className="flex flex-col gap-5 w-full">
         <div className="grid grid-cols-1">
           <CustomTabs
             defaultValue={padding}

@@ -7,17 +7,10 @@ import Footer from "../Footer/Index";
 
 const Dashboard = () => {
   const codeBoxParent = React.useRef<HTMLDivElement>(null);
-  const [isLeftSidebarOpen, setLeftSidebarOpen] = useState(true);
-  const [downloadFlag, setDownload] = useState(false);
-  const [isRightSidebarOpen, setRightSidebarOpen] = useState(true);
-
-  const toggleLeftSidebar = () => {
-    setLeftSidebarOpen(!isLeftSidebarOpen);
-  };
-
-  const toggleRightSidebar = () => {
-    setRightSidebarOpen(!isRightSidebarOpen);
-  };
+  const [downloadFlag, setDownload] = useState({
+    enable: false,
+    format: "png",
+  });
 
   return (
     <div className="h-screen db p-5 flex flex-col md:gap-5 gap-2.5">

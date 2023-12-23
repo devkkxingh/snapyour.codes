@@ -9,8 +9,11 @@ export const settingsSlice = createSlice({
     opacity: 100,
     boxBackground: "linear-gradient(-45deg, #402662 0%, #8000FF 100%)",
     header: "show",
+    watermark: "show",
     style: "default",
     os: "macos",
+    logo: "twitter",
+    username: "Lorem",
     language: "typescript",
     lineNumber: "show",
     reflection: "show",
@@ -43,11 +46,20 @@ export const settingsSlice = createSlice({
     changeHeader: (state, action) => {
       state.header = action.payload;
     },
+    changeWaterMark: (state, action) => {
+      state.watermark = action.payload;
+    },
     changeStyle: (state, action) => {
       state.style = action.payload;
     },
     changeOS: (state, action) => {
       state.os = action.payload;
+    },
+    changeName: (state, action) => {
+      state.username = action.payload;
+    },
+    changeLogo: (state, action) => {
+      state.logo = action.payload;
     },
     changeLanguage: (state, action) => {
       state.language = action.payload;
@@ -78,12 +90,15 @@ export const settingsSlice = createSlice({
         opacity: 100,
         boxBackground: "linear-gradient(-45deg, #402662 0%, #8000FF 100%)",
         header: "show",
+        watermark: "show",
         style: "default",
         os: "macos",
+        logo: "twitter",
         language: "typescript",
         lineNumber: "show",
         reflection: "show",
         fontFamily: "Monaco",
+        username: "Lorem",
         fontWeight: "400",
         theme: {
           key: 0,
@@ -106,14 +121,17 @@ export const {
   changeOpacity,
   changeBoxBackground,
   changeHeader,
+  changeWaterMark,
   changeStyle,
   changeOS,
+  changeLogo,
   changeLanguage,
   changeLineNumber,
   changeReflection,
   changeFontFamily,
   changeFontWeight,
   resetSettings,
+  changeName,
   changeTheme,
   changeCode,
 } = settingsSlice.actions;

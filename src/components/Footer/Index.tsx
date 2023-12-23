@@ -13,7 +13,7 @@ import WindowFrame from "../misc/WindowFrame";
 import Editor from "../misc/Editor";
 import ThemesList from "../misc/ThemesList";
 
-const Footer = ({ setDownload }: any) => {
+const Footer = () => {
   const [menuName, setMenuName] = useState("Window");
 
   const Menu = () => {
@@ -77,7 +77,7 @@ const Footer = ({ setDownload }: any) => {
 
         <SheetContent
           side="bottom"
-          className="text-white p-4 min-h-[200px] max-h-[400px]"
+          className="text-white p-4 min-h-[200px] max-h-[400px] overflow-auto"
         >
           <Menu />
         </SheetContent>
