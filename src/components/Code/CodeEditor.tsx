@@ -166,9 +166,10 @@ const CodeEditorComponent: React.FC<any> = ({ width }) => {
           </div>
         )}
         <div
-          className={clsx("code-container pt-1 pb-5 relative", {
+          className={clsx("code-container pt-1 relative", {
             "rounded-t-[8px] pt-5": headerVisible === "hide",
             "pb-12": watermark === "show",
+            "pb-5": watermark === "hide",
           })}
           style={{
             background: style === "default" ? theme?.bg : theme?.mergeStyle,

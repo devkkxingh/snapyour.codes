@@ -14,7 +14,7 @@ const Header = ({ setDownload }: any) => {
           <span className="">{"<YourCodes/>"}</span>
         </div>
       </div>
-      <div className="flex gap-4 items-center justify-between">
+      <div className="flex md:gap-4 gap-1 items-center justify-between">
         <Menu as="div" className="relative inline-block text-left ">
           <Menu.Button className="tab tab-active rounded  text-xs h-8 w-28 bg-[#6C22D7] flex items-center justify-evenly">
             Export
