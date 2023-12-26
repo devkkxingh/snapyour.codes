@@ -1,5 +1,6 @@
 import { FiDownload, FiImage, FiCode } from "react-icons/fi";
 import LogoSvg from "../UI/LogoSvg";
+import { FaGithub } from "react-icons/fa";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 
@@ -13,7 +14,7 @@ const Header = ({ setDownload }: any) => {
           <span className="">{"<YourCodes/>"}</span>
         </div>
       </div>
-      <div>
+      <div className="flex gap-4 items-center justify-between">
         <Menu as="div" className="relative inline-block text-left ">
           <Menu.Button className="tab tab-active rounded  text-xs h-8 w-28 bg-[#6C22D7] flex items-center justify-evenly">
             Export
@@ -72,6 +73,13 @@ const Header = ({ setDownload }: any) => {
             </Menu.Items>
           </Transition>
         </Menu>
+        <a
+          className="text-3xl"
+          href="https://github.com/devkkxingh/snapyour.codes"
+          target="_blank"
+        >
+          <FaGithub className="w-10 text-[#6C22D7]" />
+        </a>
       </div>
     </div>
   );
