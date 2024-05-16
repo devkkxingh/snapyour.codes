@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import CodeBox from "./components/Code/CodeBox";
 import Dashboard from "./components/Layout/Dashboard";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
